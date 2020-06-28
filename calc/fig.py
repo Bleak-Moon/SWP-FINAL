@@ -10,13 +10,13 @@ def application(environ, start_response):
 	b=d.get("b", [""])[0]
 	sum="합이 출력될 예정입니다"
 	mul="곱이 출력될 예정입니다"
-	if "" not in [a, b]:
+	try:
 		a, b=int(a), int(b)
 		sum=a+b
 		mul=a*b
-
-
-
+	except ValueError:
+		sum="숫자를 입력해주세요"
+		mul="숫자를 입력해주세요"
 	response_body=html % {
 	"sum":sum,
 	"mul":mul,
